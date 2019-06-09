@@ -5,7 +5,7 @@ type Restaurant struct {
 	DBID         ID      `json:"id" bson:"_id"`
 	Name         string  `json:"name" bson:"name"`
 	Address      string  `json:"address" bson:"address"`
-	AddressLine2 string  `json:"address line 2" bson:"address line 2"`
+	AddressLine2 string  `json:"addressline2" bson:"addressline2"`
 	URL          string  `json:"url" bson:"url"`
 	Outcode      string  `json:"outcode" bson:"outcode"`
 	Postcode     string  `json:"postcode" bson:"postcode"`

@@ -2,6 +2,7 @@ package mongoutils
 
 import (
 	"log"
+        uuid "github.com/satori/go.uuid"
 
 	"gopkg.in/mgo.v2"
 )
@@ -23,3 +24,9 @@ func RegisterMongoSession(mongoURI string) (*mgo.Session, error) {
 	}
 	return MongoSession, nil
 }
+
+func NewUUID() string {
+        id, _ := uuid.NewV4()
+        return id.String()
+}
+

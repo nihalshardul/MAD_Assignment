@@ -3,7 +3,6 @@ package dbrepository
 //import "github.com/priteshgudge/mongorestaurantsample/domain"
 import "mongorestaurantsample-master/domain"
 
-
 //Reader read from db
 type Reader interface {
 	Get(id domain.ID) (*domain.Restaurant, error)
@@ -14,6 +13,8 @@ type Reader interface {
 
 //Writer  write to db
 type Writer interface {
+	//Create Or update
+	Update(inp *domain.Restaurant) error
 	//Create Or update
 	Store(b *domain.Restaurant) (domain.ID, error)
 	Delete(id domain.ID) error
@@ -32,5 +33,5 @@ type Filter interface {
 type Repository interface {
 	Reader
 	Writer
-	//Filter
+	Filter
 }

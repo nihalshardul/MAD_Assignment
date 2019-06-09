@@ -5,13 +5,15 @@ import (
 	"fmt"
 	"os"
 	"strings"
-//	"bson"
-//	dbrepo "github.com/priteshgudge/mongosample/dbrepository"
+
+	//	"bson"
+	//	dbrepo "github.com/priteshgudge/mongosample/dbrepository"
 	dbrepo "./dbrepository"
 
-//	mongoutils "github.com/priteshgudge/mongosample/utils"
+	//	mongoutils "github.com/priteshgudge/mongosample/utils"
 	mongoutils "./utils"
 )
+
 //	importing domain obbject restaurant
 //import "mongorestaurantsample-master/domain"
 //import "gopkg.in/mgo.v2/bson"
@@ -22,33 +24,33 @@ func main() {
 
 	dbname := "restaurant"
 	repoaccess := dbrepo.NewMongoRepository(mongoSession, dbname)
-//	fmt.Println(repoaccess)
+	//	fmt.Println(repoaccess)
 
 	//Run sample commands
 
-	document :=os.Args[1]
-	data :=os.Args[2]
-	s := strings.Split(data,"=")
-	s[0]=s[0][2:]
+	document := os.Args[1]
+	data := os.Args[2]
+	s := strings.Split(data, "=")
+	s[0] = s[0][2:]
 	var count int
-	if (document=="find"){
-		if(s[0]=="type_of_food"){
-			result,_ := repoaccess.FindByTypeOfFood(s[1])
+	if document == "find" {
+		if s[0] == "type_of_food" {
+			result, _ := repoaccess.FindByTypeOfFood(s[1])
 			fmt.Println(result)
-		} else if(s[0]=="postcode"){
-			result,_ := repoaccess.FindByTypeOfPostCode(s[1])
+		} else if s[0] == "postcode" {
+			result, _ := repoaccess.FindByTypeOfPostCode(s[1])
 			fmt.Println(result)
-		} else{
+		} else {
 			fmt.Println("Invalid arguments")
 		}
-	 } else if (document=="count"){
-		 if(s[0]=="type_of_food"){
-		count,_ = repoaccess.CountRestaurantByFood(s[1])
-		fmt.Println("count Restaurant ByFood ",count)
-	}else{
-		fmt.Println("Invalid arguments")
-	}
-	} else{
+	} else if document == "count" {
+		if s[0] == "type_of_food" {
+			count, _ = repoaccess.CountRestaurantByFood(s[1])
+			fmt.Println("count Restaurant ByFood ", count)
+		} else {
+			fmt.Println("Invalid arguments")
+		}
+	} else {
 		fmt.Println("Invalid arguments")
 	}
 }
